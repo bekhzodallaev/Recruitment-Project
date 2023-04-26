@@ -172,3 +172,6 @@ p {
 .vertical-splitter .horizontal-splitter button {
   height: 25%;
 }
+.imageTile.light {
+  background-color: #f0f0f0;
+}

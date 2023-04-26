@@ -19,11 +19,36 @@ export const ImageTileComponent: React.FC<{ element: ImageTile }> = ({
 }) => {
   return (
     <div className="imageTile" key={element.elementKey}>
-      <img src={element.source} alt={element.title} />
+      {element.source && element.title && (
+        <img src={element.source} alt={element.title} />
+      )}
     </div>
   );
 };
 
+// ButtonTile Component
+// export const ButtonTileComponent: React.FC<{
+//   element: ButtonTile;
+//   setMainImage: React.Dispatch<React.SetStateAction<ImageTile | undefined>>;
+// }> = ({ element, setMainImage }) => {
+//   const handleClick = () => {
+//     if (element.action.type === "update") {
+//       setMainImage({
+//         type: "imageTile",
+//         elementKey: element.action.referenceElementkey || "",
+//         source: element.action.value.source,
+//         title: element.action.value.title,
+//       });
+//     }
+//   };
+
+//   return (
+//     <button className="buttonTile" onClick={handleClick}>
+//       {element.text}
+//     </button>
+//   );
+// };
+// ButtonTile Component
 // ButtonTile Component
 export const ButtonTileComponent: React.FC<{
   element: ButtonTile;
@@ -33,9 +58,10 @@ export const ButtonTileComponent: React.FC<{
     if (element.action.type === "update") {
       setMainImage({
         type: "imageTile",
-        elementKey: element.action.referenceElementkey,
-        source: element.action.value.source,
+        elementKey: element.action.referenceElementkey || "",
+        source: element.action.value.source || undefined,
         title: element.action.value.title,
+        backgroundColor: !element.action.value.source ? "light" : undefined,
       });
     }
   };

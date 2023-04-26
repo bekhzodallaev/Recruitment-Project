@@ -32,8 +32,10 @@ export interface TextTile extends Element {
  */
 export interface ImageTile extends Element {
   type: "imageTile";
-  title: string;
-  source: string;
+  elementKey: string;
+  source?: string; // Make this property optional
+  title?: string;
+  backgroundColor?: string;
 }
 
 /**
@@ -64,19 +66,19 @@ export interface VerticalSplitter extends Element {
 /**
  * Executable action. Payload(value) depends on the action type.
  */
-export interface Action {
-  type: "update";
-  referenceElementkey: string;
-  value: {
-    [key: string]: string;
-  };
-}
 // export interface Action {
-//   type: ActionType;
-//   referenceElementkey?: string;
+//   type: "update";
+//   referenceElementkey: string;
 //   value: {
 //     [key: string]: string;
 //   };
 // }
+export interface Action {
+  type: ActionType;
+  referenceElementkey?: string;
+  value: {
+    [key: string]: string;
+  };
+}
 
-// export type ActionType = "update" | "color";
+export type ActionType = "update" | "color";

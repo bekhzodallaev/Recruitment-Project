@@ -43,8 +43,8 @@ export default function App() {
       <div className="container">
         {/* Render image container */}
         <div className="image-container">
-          {/* Render main image */}
-          {mainImage && (
+          {/* Render main image if source exists */}
+          {mainImage && mainImage.source && (
             <img
               className="main-image"
               src={mainImage.source}
@@ -52,9 +52,9 @@ export default function App() {
             />
           )}
           {/* Render image description */}
-          <div className="image-description">
-            {mainImage && mainImage.title}
-          </div>
+          {mainImage && mainImage.title && (
+            <div className="image-description">{mainImage.title}</div>
+          )}
         </div>
         {/* Render elements container */}
         <div className="elements-container">
